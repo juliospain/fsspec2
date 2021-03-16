@@ -3,7 +3,6 @@ import pickle
 import tempfile
 import zipfile
 from contextlib import contextmanager
-
 import pytest
 
 import fsspec
@@ -200,6 +199,7 @@ def test_target_protocol_options(ftp_writable):
     options = {"host": host, "port": port, "username": username, "password": password}
     with fsspec.open("ftp:///afile", "wb", **options) as f:
         f.write(data)
+
     with fsspec.open(
         "simplecache://afile",
         "rb",
